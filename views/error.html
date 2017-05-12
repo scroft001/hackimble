@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="{{ localeInfo.lang }}" dir="{{ localeInfo.direction }}">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ gettext("errorSomethingWentWrong") }}</title>
+    <link rel="stylesheet" href="/resources/stylesheets/userbar.css">
+    <link rel="stylesheet" href="/homepage/stylesheets/style.css">
+    <link rel="stylesheet" href="/resources/stylesheets/error.css">
+  </head>
+  <body class="homepage">
+
+    <nav class="navbar-thimble container-flex">
+      <div id="navbar-left" class="container-flex">
+        <div class="navbar-logo-container">
+          <a href="/{{ locale }}" class="logo">
+            <img src="/img/thimble-logo.svg" class="thimble-logo-full">
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="main-cta">
+      <div class="content-wrapper centered-message">
+        {% if status == 404 %}
+          <img class="spilled-thimble" src="/img/thimble-404.png" />
+          <h1>{{ gettext("errorPageNotFound") }}</h1>
+          <h2>
+            {{ gettext("errorPageNotFoundDetails") | safe }}
+          </h2>
+        {% else %}
+          <img class="spilled-thimble" src="/img/spilled-thimble.png" />
+          <h1>{{ gettext("errorSomethingWentWrong") }}</h1>
+          <h2>
+            {{ gettext("errorSomethingWentWrongDetails") }}
+          </h2>
+        {% endif %}
+
+        <div class="contact-icons">
+          <a title="{{ gettext("contactEmail") }}" class="email" href="mailto:thimble@mozillafoundation.org">
+            <span class="icon"></span>
+          </a>
+          <a title="{{ gettext("contactTwitterTitle") }}" class="twitter" href="https://twitter.com/mozlearn">
+            <span class="icon"></span>
+          </a>
+          <a title="{{ gettext("contributeTitle") }}" class="github" href="https://github.com/mozilla/thimble.mozilla.org">
+            <span class="icon"></span>
+          </a>
+        </div>
+
+        {% if status != 404 %}
+          <div class="error-details-wrapper">
+            <div class="error-details">
+              <h1>{{ gettext("errorDetailsHeader") }}</h1>
+              <div class="details">
+                {{ statusMessage }}: {{ message }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+
+    {% include 'remix-projects.html' %}
+    {% include 'footer.html' %}
+  </body>
+</html>

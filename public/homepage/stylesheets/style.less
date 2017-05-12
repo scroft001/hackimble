@@ -1,0 +1,472 @@
+body {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+@import "variables.less";
+
+body, html {
+  padding: 0;
+  margin: 0;
+}
+
+// For capturing mouse events over the iframe when menus appear overtop.
+.click-underlay {
+  width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 150;
+  overflow: hidden;
+}
+
+header {
+    padding: 20px;
+    overflow: auto;
+    background: @darkgreen;
+
+    .branding {
+        float: left;
+        color: white;
+
+        img {
+            position: relative;
+            top: 2px;
+        }
+    }
+
+    .account-actions {
+        float: right;
+        color: rgba(255,255,255,.7);
+        font-size: 15px;
+
+        a {
+            color: white;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+/* User bar overrides for homepage */
+.navbar-thimble {
+  #navbar-login {
+    border-left: none;
+    margin-right: 0 !important;
+
+    &.signed-in {
+      border-right: none;
+    }
+  }
+
+  #navbar-right {
+    margin-right: 0;
+  }
+
+  .navbar-logo-container {
+    &:hover {
+      .transform(none);
+    }
+
+    &:active {
+      .transform(none);
+    }
+  }
+  .thimble-logo {
+    height: auto;
+    width: auto;
+  }
+}
+
+footer {
+  background: @lightgreen;
+
+  .content-wrapper {
+    padding: 40px 0 40px 0;
+    width: 964px;
+    margin: 0 auto;
+    position: relative;
+    color: white;
+    overflow: auto;
+    font-size: 15px;
+  }
+
+  .social-links {
+    list-style-type: none;
+    margin: 0 0 32px 0;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+
+
+    li {
+      flex: 1;
+      padding: 0;
+      margin: 0 5px;
+    }
+
+    li a {
+      display: block;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .icon {
+      position: absolute;
+      display: block;
+      width: 20px;
+      height: 20px;
+      top: 1px;
+      left: 0;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .email .icon {
+      background-image: ~"url(/img/footer-icon-email.svg)";
+    }
+
+    .help .icon {
+      background-image: ~"url(/img/footer-icon-help.svg)";
+    }
+
+    .twitter .icon {
+      background-image: ~"url(/img/footer-icon-twitter.svg)";
+    }
+
+    .github .icon {
+      background-image: ~"url(/img/footer-icon-github.svg)";
+    }
+
+    .terms .icon {
+      background-image: ~"url(/img/footer-icon-terms.svg)";
+      top: 0;
+    }
+
+    .privacy .icon {
+      background-image: ~"url(/img/footer-icon-privacy.svg)";
+      top: 0;
+    }
+  }
+
+  .social-links a {
+    opacity: .7;
+    color: white;
+    text-decoration: none;
+    .transition(opacity .1s linear);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .project-info {
+    background: @darkgreen;
+    padding: 18px 20px;
+    width: 610px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 2px;
+    line-height: 22px;
+
+    .mozilla-logo {
+      position: absolute;
+      bottom: 24px;
+      left: 20px;
+
+      img {
+        display: block;
+        width: 100px;
+      }
+    }
+
+    .thimble-context {
+      margin: 0 0 0 122px;
+      padding: 0 0 0 20px;
+      color: rgba(255,255,255,.5);
+      border-left: solid 2px @lightgreen;
+
+      a {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.main-cta {
+  background-color: #47AD66;
+  background-image: ~"url(/img/teach-pattern-2.png)";
+  background-size: 200px;
+  padding: 30px 0;
+
+  .content-wrapper {
+    width: 964px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .left-side {
+    width: 45%;
+    padding: 35px 0 80px 0;
+  }
+
+  h1 {
+    color: white;
+    padding: 0;
+    font-weight: normal;
+    font-size: 37px;
+    line-height: 42px;
+    margin: 0 0 15px 0;
+  }
+
+  p {
+    color: rgba(255,255,255,.9);
+    margin: 0 0 45px 0;
+    line-height: 140%;
+
+    a {
+      color: white;
+
+      &:hover {
+        color: rgba(255,255,255,1);
+      }
+    }
+  }
+
+  .new-project-button-wrapper {
+      display: inline-block;
+      padding: 5px;
+      border-radius: 5px;
+      position: relative;
+      top: -5px;
+      left: -5px;
+      .transition(background .1s ease-out);
+
+      &:hover {
+          background: #2d9961;
+      }
+
+      &:active {
+          .transition(none);
+          background: none;
+      }
+  }
+
+  .button {
+    background-color: white;
+    padding: 10px 21px 11px 45px;
+    line-height: 28px;
+    display: inline-block;
+    color: @lightgreen;
+    border-radius: 3px;
+    box-shadow: 0 2px 0 rgba(0,0,0,.15);
+    position: relative;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+    background-position:  13px center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    box-sizing: border-box;
+    outline: solid 3px transparent;
+
+    &:active {
+      position: relative;
+      top: 2px;
+      opacity: 1;
+      box-shadow: none;
+    }
+  }
+
+  .video {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background: black;
+
+    iframe {
+      position: relative;
+      z-index: 2;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 10px;
+      width: ~"calc(100% - 20px)";
+      height: 35px;
+      box-shadow: 0 5px 15px rgba(0,0,0,.3);
+      border-radius: 40%;
+      z-index: 1;
+    }
+  }
+
+  // 404
+  .not-found-message {
+    text-align: center;
+    padding: 25px 0 35px 0;
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 30px;
+      line-height: 120%;
+    }
+  }
+}
+
+.button:hover {
+  .line {
+    .animation(line, 3s, linear, infinite, 0s);
+  }
+  .line-two {
+    .animation(line, 3s, linear, infinite, 1s);
+  }
+  .line-three {
+    .animation(line, 3s, linear, infinite, 2s);
+  }
+  .pencil {
+    .animation(pencil, 1s, linear, infinite, 0s);
+  }
+}
+
+.pencil-animation {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 14px;
+  top: 15px;
+
+  .pencil {
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    background: ~"url(/img/pencil-icon.svg)";
+    background-size: 100%;
+  }
+
+  .line-wrapper {
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    overflow: hidden;
+  }
+
+  .line {
+    height: 100%;
+    width: 96%;
+    position: absolute;
+    transform-origin: left;
+    -webkit-transform-origin: left;
+    .transform(scaleX(0));
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 13%;
+      background: #47ad66;
+      bottom: 0px;
+    }
+  }
+}
+
+@keyframes pencil {
+  0% {
+    .transform(translateX(0));
+  }
+  13.5%{
+    .transform(translateX(90%));
+  }
+  40% {
+    .transform(translateX(90%));
+  }
+  60% {
+    .transform(translateX(50%) translateY(-30%));
+  }
+  80% {
+    .transform(translateX(0));
+  }
+}
+
+@-webkit-keyframes pencil {
+  0% {
+    .transform(translateX(0));
+  }
+  13.5%{
+    .transform(translateX(90%));
+  }
+  40% {
+    .transform(translateX(90%));
+  }
+  60% {
+    .transform(translateX(50%) translateY(-30%));
+  }
+  80% {
+    .transform(translateX(0));
+  }
+}
+
+@keyframes line {
+  5.5% {
+    .transform(scaleX(1));
+  }
+  20% {
+    .transform(scaleX(1));
+  }
+  33% {
+    .transform(scaleX(1) translateY(-43.5%));
+  }
+  53% {
+    .transform(scaleX(1) translateY(-43.5%));
+  }
+  66% {
+    .transform(scaleX(1) translateY(-87%));
+  }
+  87% {
+    .transform(scaleX(1) translateY(-87%));
+  }
+  100% {
+    .transform(scaleX(1) translateY(-150%));
+  }
+}
+
+@-webkit-keyframes line {
+  5.5% {
+    .transform(scaleX(1));
+  }
+  20% {
+    .transform(scaleX(1));
+  }
+  33% {
+    .transform(scaleX(1) translateY(-43.5%));
+  }
+  53% {
+    .transform(scaleX(1) translateY(-43.5%));
+  }
+  66% {
+    .transform(scaleX(1) translateY(-87%));
+  }
+  87% {
+    .transform(scaleX(1) translateY(-87%));
+  }
+  100% {
+    .transform(scaleX(1) translateY(-150%));
+  }
+}

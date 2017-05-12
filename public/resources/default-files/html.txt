@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Made with Thimble</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h1>Welcome to Thimble</h1>
+    <p>Make something <strong>amazing</strong> with the web!</p>
+  </body>
+</html>
